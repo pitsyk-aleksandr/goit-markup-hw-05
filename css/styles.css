@@ -1,0 +1,792 @@
+/* :root - специфичный аналог селектора <html> в CSS*/
+/* Указываются */
+/* CSS-переменные (кастомные свойства) */
+:root {
+  /* #757575 - p, header - a(email) и a(tel) - не активные */
+  --main-text-color: #757575;
+  /* #212121 - h2, h3, a(nav in header) - не активный*/
+  --second-text-color: #212121;
+  /* #2196F3 - logo, a(nav):hover, button(background)*/
+  --acsent-color: #2196f3;
+  /* #FFFFFF - background-page, h1, button(text), footer - logo, adress (почтовый адрес) */
+  --main-white-color: #ffffff;
+  /* #2F303A - background-hero, background-footer */
+  --background-grey-color: #2f303a;
+  /* #F5F4FA - background-section-team */
+  --background-section-color: #f5f4fa;
+  /* #000000 - logo(header)*/
+  --main-black-color: #000000;
+  /* rgba(255,255,255,0.6) - adress (tel,email) */
+  --text-footer-tel-color: rgba(255, 255, 255, 0.6);
+  /* #ECECEC - обводка-header + line в index.html (между header и main)*/
+  --stroke-index-color: #ececec;
+  /* #EEEEEE - обводка карточки в portfolio.html */
+  --stroke-portfolio-color: #eeeeee;
+  /* #AFB1B8 - обводка карточки в разделе Клиенты */
+  --stroke-client-color: #afb1b8;
+}
+
+/* Палитра основных цветов */
+/* #757575 - p, a(email) и a(tel) - не активные */
+/* #212121 - h2, h3, a(nav in header) - не активный*/
+/* #2196F3 - logo, a(nav):hover, button(background)*/
+/* #FFFFFF - background-page, h1, button(text), footer - logo, adress (почтовый адрес) */
+/* #2F303A - background-hero, background-footer */
+/* #F5F4FA - background-section-team */
+/* #000000 - logo(header)*/
+/* rgba(255,255,255,0.6) - adress (tel,email) */
+/* #ECECEC - обводка-header + line в index.html (между header и main)*/
+/* #EEEEEE - обводка карточки в portfolio.html */
+/* #AFB1B8 - обводка карточки в разделе Клиенты */
+
+/* Шрифты */
+
+.roboto-regular {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Задание всем элементам свойства box-sizing: border-box; */
+html {
+  box-sizing: border-box;
+}
+
+/* Наследование свойств для элемента от ближайшего предка */
+/* *, */
+/* *::before, */
+/* *::after { */
+/* box-sizing: inherit; */
+/* } */
+
+/* Обнуление отступов для заголовков и абзаца */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Тело сайта */
+body {
+  /* Обнуление внешних отступов для тела сайта */
+  margin: 0px;
+
+  background-color: var(--main-white-color);
+  color: var(--main-text-color);
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+
+/* Утилиты */
+
+/* Класс для настройки всех перечней - может быть вторым классом в тегах ul */
+.list {
+  /* Сбросить все отступы по умолчанию */
+  margin: 0;
+  padding: 0;
+  /* Убрать первые точечки в неупорядоченном списке */
+  list-style: none;
+}
+
+/* Это класс, который ограничивает контент размером сетки и устанавливает отступы */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+  padding-top: 0px;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+}
+
+/* Верхняя строка - header */
+.page-header {
+  border: var(--stroke-index-color) solid 1px;
+}
+
+.page-header .container {
+  display: flex;
+  /* Установка всех элементов в строку */
+  flex-direction: row;
+  /* Выравнивание всех элементов контейнера по второстепенной оси - по центру */
+  align-items: center;
+  /* Выравнивание элементов по главной оси  */
+  justify-content: space-between;
+}
+
+/* Логотип - общие свойства */
+.logo {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  font-family: 'Raleway', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 26px;
+  line-height: 1.2;
+  letter-spacing: 3%;
+
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+/* Логотип - синяя часть текста */
+.logo-blue {
+  color: var(--acsent-color);
+}
+/* Логотип - черная часть текста - в header */
+.logo-black {
+  color: var(--main-black-color);
+}
+/* Логотип - белая часть текста - в footer */
+.logo-white {
+  color: var(--main-white-color);
+}
+
+/* Стилизация header */
+/* Стилизация меню .nav-site */
+.nav-site {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между пунктами меню навигации */
+  /* gap: 50px; */
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* Расстояние между пунктами меню навигации */
+.nav-site .item:not(:last-child) {
+  margin-right: 50px;
+}
+
+.nav-site .link {
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  color: var(--second-text-color);
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+/* При наведении мышки или при получении фокуса */
+.nav-site .link:hover,
+.nav-site .link:focus {
+  color: var(--acsent-color);
+}
+
+/* Правило - другой цвет ссылки , если ссылка указывает на текущую страницу */
+/* Обязательно .link.current БЕЗ ПРОБЕЛА, тогда применяется class="link current" */
+.nav-site .link.current {
+  color: var(--acsent-color);
+}
+
+/* Стилизация меню .nav-adress */
+.nav-adress {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между пунктами меню навигации */
+  /* gap: 50px; */
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.nav-adress .link {
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  color: var(--main-text-color);
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+
+/* Расстояние между пунктами меню навигации - задаем через селектор соседа */
+.nav-adress .item + .item {
+  margin-left: 50px;
+}
+
+.nav-adress .icon {
+  fill: var(--stroke-client-color);
+  margin-right: 10px;
+}
+
+.nav-adress .link:hover .icon {
+  fill: var(--acsent-color);
+}
+
+/* При наведении мышки или при получении фокуса */
+.nav-adress .link:hover,
+.nav-adress .link:focus {
+  color: var(--acsent-color);
+}
+
+/* Вставляем иконки через псевдоэлемент ::before */
+/* .email.link::before {
+  display: inline-flex;
+  content: '';
+  width: 16px;
+  height: 12px;
+  margin-right: 10px;
+  background-image: url(../icon/envelope.svg);
+  background-size: contain;
+  background-position: center;
+} */
+
+/* hero - Приветствие к кнопкой call-to-action */
+.hero {
+  /* Выравнивание блока по центру экрана */
+  margin-left: auto;
+  margin-right: auto;
+  /* Внутренние отступы блока до текста и кнопки */
+  padding-top: 200px;
+  padding-bottom: 200px;
+
+  /* Максимальная ширина блока по ширине картинки - это позволяет не изменять размер картинки */
+  max-width: 1600px;
+  /* Выравнивание заголовка и кнопки по центру */
+  text-align: center;
+  /* Обязательное свойство, если картинка не загрузится из сервера */
+  background-color: var(--background-grey-color);
+  /* Фоновый рисункок */
+  /* background-image: url(../images/hero.jpg); */
+  /* Фоновый рисункок и затемнение градиентом */
+  background-image: linear-gradient(to bottom, rgba(47, 48, 58, 0.4) 50%, rgba(130, 132, 160, 0.4)),
+    url(../images/hero.jpg);
+}
+.hero-title {
+  /* outline: tomato solid 1px; */
+  /* Обнуление внешних отступов, которые устанавлены для h1 по умолчанию */
+  margin-top: 0;
+  /* Расстояние до кнопки */
+  margin-bottom: 30px;
+
+  color: var(--main-white-color);
+
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.363;
+  letter-spacing: 0.06em;
+  /* Выравнивание этого текстового блока по центру */
+  text-align: center;
+}
+
+.hero-button {
+  /* Внутренние отступы от края кнопки до текста */
+  padding-left: 32px;
+  padding-top: 10px;
+  padding-right: 32px;
+  padding-bottom: 10px;
+
+  /* Радиус скругления углов кнопки */
+  border-radius: 4px;
+  /* Обводка кнопки - отсутствует */
+  border: none;
+
+  color: var(--main-white-color);
+  background-color: var(--acsent-color);
+
+  /* Шрифт названия кнопки */
+  /* Для кнопки - обязательное указание шрифта или указание унаследования (по умолчанию, заданный ранее) */
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875; /* 30 px*/
+  letter-spacing: 0.06em;
+}
+
+.hero-button:hover,
+.hero-button:focus {
+  /* Вид курсора при наведении на кнопку либо при фокусе с клавиатуры */
+  cursor: pointer;
+}
+
+.hero-button:active {
+  /* Меняется цвет фона кнопки при нажатии на кнопку */
+  background-color: var(--main-black-color);
+}
+
+/* Секции  */
+
+/* Стандартная секция - свойства */
+.section {
+  padding-top: 94px;
+  padding-bottom: 94px;
+}
+
+/* Секция без нижнего внутреннего отступа */
+.section.no-padding-bottom {
+  padding-bottom: 0;
+}
+
+.section-title {
+  margin-bottom: 50px;
+
+  color: var(--second-text-color);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  /* Выравнивание текста по центру */
+  text-align: center;
+}
+
+/* Только для секции Преимущества убирает вывод на экран заголовка */
+/* .section-title.feature {
+  visibility: hidden;
+}  */
+
+/* feature - Особливості - Преимущества */
+.feature-list {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между элементами - свойство gap - the gutters between grid rows and columns. */
+  /* gap: 30px; */
+  row-gap: 30px;
+  column-gap: 30px;
+}
+
+/* Картинка для каждого преимущества - в .item::before */
+/* .feature-list .item::before {
+  /* content: ''; */
+/* height: 120px; */
+/* Картинка на всю ширину блока */
+/* display: block; */
+/* background-color: var(--background-section-color); */
+/* background-position: center; */
+/* background-repeat: no-repeat; */
+/* background-size: 70px 70px; */
+/* margin-bottom: 30px; */
+/* } */
+
+/* Иконки для каждого преимущества */
+/* .feature-list .item.antenna::before { */
+/* background-image: url(../icon/antenna.svg); */
+/* } */
+
+/* При вставке иконки через Inline-SVG */
+.feature-item-icon {
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--background-section-color);
+  margin-bottom: 30px;
+}
+
+.feature .icon {
+  display: block;
+  margin: 0;
+  /* padding-top: 25px;
+  padding-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  background-color: var(--acsent-color); */
+}
+/* Название преимущества */
+.feature-list .title {
+  margin-bottom: 10px;
+
+  color: var(--second-text-color);
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+/* Для всех четных элементов списка Преимущества */
+/* .feature-list > .item:nth-child(2n) { */
+/* background-color: var(--acsent-color); */
+/* } */
+
+/* Описание преимущества */
+.feature-list .text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71428; /* 24px */
+  letter-spacing: 0.03em;
+}
+
+/* work - Роботи */
+.work-list {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между видами работ  */
+  gap: 30px;
+}
+
+/* team - Команда */
+.team {
+  background-color: var(--background-section-color);
+}
+
+.team .team-list {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между карточками работников */
+  gap: 30px;
+}
+
+.team-list-item {
+  /* Радиусы скругления нижние */
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  /* Многослойная тень для карточки сотрудника */
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+  /* Горизонтальное выравнивание текта  */
+  text-align: center;
+}
+
+.team-list-item .photo {
+  margin-bottom: 30px;
+}
+
+.team-list-item .name {
+  margin-bottom: 10px;
+
+  color: var(--second-text-color);
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+.team-list-item .type-worker {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+.team-list-item .social-links {
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 30px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  width: 206px;
+  height: 44px;
+}
+
+.social-links > .item > .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: 1px solid var(--main-white-color);
+
+  cursor: pointer;
+
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+
+.social-links .icon {
+  display: block;
+  margin: 0;
+  fill: var(--stroke-client-color);
+}
+
+.social-links > .item > .link:hover,
+.social-links > .item > .link:focus {
+  background-color: var(--acsent-color);
+}
+
+.social-links > .item > .link:hover .icon,
+.social-links > .item > .link:focus .icon {
+  fill: var(--main-white-color);
+}
+
+/* Клиенты */
+.client .client-list {
+  display: flex;
+  flex-direction: row;
+  /* Расстояние между картинками - логотипами клиентов */
+  gap: 30px;
+}
+
+/* Блок логотипа с рамкой */
+.client-list-item .client-link {
+  width: 170px;
+  height: 92px;
+  border-color: var(--stroke-client-color);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 32px;
+  padding-right: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Картинка с логотипом */
+.client-svg {
+  /* Все размеры иконок заданы в теге SVG в HTML-файле */
+  /* max-height: 47px; */
+  /* max-width: 94px; */
+  /* Рамка для отслеживания размера иконки */
+  /* outline: #2196f3 solid 1px; */
+  /* Делаем блочный элемент,чтобы убрать стандартный отступ снизу картинки*/
+  display: block;
+  fill: var(--stroke-client-color);
+}
+
+/* При нажатии на иконку с логотипом клиента */
+.client-list-item .client-link:hover,
+.client-list-item .client-link:focus {
+  border-color: var(--acsent-color);
+}
+
+/* Для полностью встроенного SVG (на примере Клиент 1) */
+/* .client-svg:hover .path {
+  fill: var(--acsent-color);
+} */
+
+.client-list-item .client-link:hover .client-svg,
+.client-list-item .client-link:focus .client-svg {
+  fill: var(--acsent-color);
+}
+
+/* Portfolio */
+
+.portfolio-title {
+  color: var(--main-black-color);
+
+  /* Выравнивание текста по центру */
+  text-align: center;
+}
+
+/* filter - Фильтры */
+.filter-title {
+  color: var(--main-black-color);
+
+  /* Выравнивание текста по центру */
+  text-align: center;
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+
+  margin-bottom: 24px;
+}
+
+.filter-button {
+  /* Внутренние отступы от края кнопки до текста */
+  padding-left: 22px;
+  padding-top: 6px;
+  padding-right: 22px;
+  padding-bottom: 6px;
+
+  /* Радиус скругления углов кнопки */
+  border-radius: 4px;
+  /* Обводка кнопки - отсутствует */
+  border: none;
+
+  color: var(--second-text-color);
+  background-color: var(--background-section-color);
+
+  /* Шрифт */
+  /* Для кнопки - обязательное указание шрифта или указание унаследования (по умолчанию, заданный ранее) */
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.625; /* 26px */
+  letter-spacing: 0.03em;
+}
+
+.filter-button:hover,
+.filter-button:focus {
+  /* Вид курсора при наведении на кнопку */
+  cursor: pointer;
+
+  color: var(--main-white-color);
+  background-color: var(--acsent-color);
+
+  /* Многослойная тень при наведении на проект */
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.12);
+}
+
+.filter-button.current {
+  color: var(--main-white-color);
+  background-color: var(--acsent-color);
+}
+
+/* project - Проэкты */
+.project-title {
+  color: var(--main-black-color);
+
+  /* Выравнивание текста по центру */
+  text-align: center;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: row;
+  /* Если элементы не вмещаются в строку, то они перепрыгивают на следующую строку */
+  flex-wrap: wrap;
+  /* Расстояние между карточками (вертикальное и горизонтальное - одинаковое */
+  gap: 30px;
+}
+
+.project-link:hover,
+.project-link:focus {
+  /* Многослойная тень при наведении на проект */
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 4px 4px 0px rgba(0, 0, 0, 0.06),
+    1px 4px 6px 0px rgba(0, 0, 0, 0.16);
+}
+
+.project-link {
+  /* Делаем ссылку блочным элементом */
+  display: block;
+
+  /* Убираем подчеркивание для ссылки */
+  text-decoration: none;
+}
+
+.project-photo {
+  /* Делаем картинку блочным элементом, убирая расстояние снизу 4px, установленное по умолчанию */
+  display: block;
+}
+
+.project-name-type {
+  padding: 20px;
+  border: var(--stroke-portfolio-color) solid 1px;
+
+  text-align: left;
+}
+
+.project-name {
+  margin-bottom: 4px;
+
+  color: var(--second-text-color);
+
+  /* Шрифт */
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 2; /* 36px */
+  letter-spacing: 0.06em;
+}
+
+.project-type {
+  color: var(--main-text-color);
+
+  /* Шрифт */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.875; /* 30px */
+  letter-spacing: 0.03em;
+}
+
+/* footer */
+footer {
+  background-color: var(--background-grey-color);
+}
+
+footer .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Почтовый адрес */
+address {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71428; /* 24px */
+  letter-spacing: 0.03em;
+}
+address .description {
+  margin-top: 20px;
+  margin-bottom: 9px;
+
+  color: var(--main-white-color);
+}
+
+/* Email */
+address .email {
+  margin-bottom: 9px;
+
+  color: var(--text-footer-tel-color);
+
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+
+address .email:hover,
+address .email:focus {
+  color: var(--acsent-color);
+}
+
+/* Телефон */
+address .tel {
+  color: var(--text-footer-tel-color);
+
+  /* Убрать подчеркивание для ссылки */
+  text-decoration: none;
+}
+
+address .tel:hover,
+address .tel:focus {
+  color: var(--acsent-color);
+}
+
+.social .title {
+  margin-bottom: 20px;
+  color: var(--main-white-color);
+}
