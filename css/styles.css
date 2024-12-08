@@ -131,7 +131,7 @@ body {
 }
 
 /* Верхняя строка - header */
-.page-header {
+.page-header .container {
   border: var(--stroke-index-color) solid 1px;
 }
 
@@ -196,7 +196,7 @@ body {
 .nav-site .link {
   display: block;
   padding-top: 32px;
-  padding-bottom: 32px;
+  padding-bottom: 28px;
 
   color: var(--second-text-color);
   /* Убрать подчеркивание для ссылки */
@@ -212,6 +212,26 @@ body {
 /* Обязательно .link.current БЕЗ ПРОБЕЛА, тогда применяется class="link current" */
 .nav-site .link.current {
   color: var(--acsent-color);
+}
+
+/* Подчеркивание активного пункта меню */
+.nav-site .link::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+
+  background-color: var(--acsent-color);
+  /* В обычном состоянии - прозрачная */
+  opacity: 0;
+}
+
+/* При ховере или фокусе  */
+.nav-site .link:hover::after,
+.nav-site .link:focus::after {
+  /* строка появляется - становится непрозрачной */
+  opacity: 1;
 }
 
 /* Стилизация меню .nav-adress */
@@ -328,17 +348,26 @@ body {
   font-size: 16px;
   line-height: 1.875; /* 30 px*/
   letter-spacing: 0.06em;
+
+  /* Вид курсора при наведении на кнопку либо при фокусе с клавиатуры */
+  cursor: pointer;
+
+  /*  Set transition values  */
+  transition-property: background-color, transform;
+  transition-duration: 500ms;
+  transition-timing-function: linear;
+  transition-delay: 0;
 }
 
 .hero-button:hover,
 .hero-button:focus {
-  /* Вид курсора при наведении на кнопку либо при фокусе с клавиатуры */
-  cursor: pointer;
+  background-color: teal;
+  /* transform: rotate(180deg); */
 }
 
 .hero-button:active {
   /* Меняется цвет фона кнопки при нажатии на кнопку */
-  background-color: var(--main-black-color);
+  background-color: red;
 }
 
 /* Секции  */
@@ -702,6 +731,50 @@ body {
 .project-photo {
   /* Делаем картинку блочным элементом, убирая расстояние снизу 4px, установленное по умолчанию */
   display: block;
+}
+
+/* Блок с картинкой */
+.image-box {
+  /* Для возможности сделать абсолютное позиционирование текста */
+  position: relative;
+  /* Скрываем переполнение - блок текста, который внизу*/
+  overflow: hidden;
+}
+
+/* Блок в текстом, выезжающий снизу */
+.image-overlay {
+  /* Свойства для центрирования блока с текстом по размеру картинки */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Горизонтальные внутренние отступы */
+  padding-left: 24px;
+  padding-right: 24px;
+
+  /* Абсолютное позиционирование */
+  position: absolute;
+  /* Установка в верхний левый угол блока картинки */
+  top: 0;
+  left: 0;
+  /* Размеры блока с текстом-overlay - по размеру картинки */
+  width: 100%;
+  height: 100%;
+  /* Смещение всего блока вниз - по оси Y */
+  transform: translateY(100%);
+
+  /* Цвет текста */
+  color: var(--main-white-color);
+  /* Фон блока - акцентный - с прозрачностью 90% */
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+/* При ховере на всю карточку с проектом снизу выходит текст */
+.project-link:hover .image-overlay,
+.project-link:focus .image-overlay {
+  /* Блок с текстом перемещается снизу и занимает 100% картинки */
+  transform: translateY(0%);
+  /* Анимация - transform -время - функция распределения времени  */
+  transition: transform 500ms linear;
 }
 
 .project-name-type {
