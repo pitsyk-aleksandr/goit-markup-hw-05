@@ -108,6 +108,11 @@ body {
   font-style: normal;
 }
 
+main {
+  /* Правильное значение будет задано через <script>  */
+  padding-top: 80px;
+}
+
 /* Утилиты */
 
 /* Класс для настройки всех перечней - может быть вторым классом в тегах ul */
@@ -130,11 +135,19 @@ body {
   padding-left: 15px;
 }
 
-/* Верхняя строка - header */
-.page-header .container {
-  border: var(--stroke-index-color) solid 1px;
+/* Header - на всю длину */
+.page-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  min-height: 80px;
+  /* Нижняя граница элемента */
+  border-bottom: var(--stroke-index-color) solid 1px;
+  background-color: var(--main-white-color);
 }
 
+/* Верхняя строка - header */
 .page-header .container {
   display: flex;
   /* Установка всех элементов в строку */
@@ -198,6 +211,7 @@ body {
   padding-top: 32px;
   padding-bottom: 28px;
 
+  /* Цвет текста */
   color: var(--second-text-color);
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
@@ -205,6 +219,14 @@ body {
 /* При наведении мышки или при получении фокуса */
 .nav-site .link:hover,
 .nav-site .link:focus {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: color;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство */
   color: var(--acsent-color);
 }
 
@@ -230,6 +252,14 @@ body {
 /* При ховере или фокусе  */
 .nav-site .link:hover::after,
 .nav-site .link:focus::after {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: opacity;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   /* строка появляется - становится непрозрачной */
   opacity: 1;
 }
@@ -261,18 +291,37 @@ body {
   margin-left: 50px;
 }
 
+/* Иконка перед - email & tel */
 .nav-adress .icon {
   fill: var(--stroke-client-color);
   margin-right: 10px;
 }
 
-.nav-adress .link:hover .icon {
+/* Изменение цвета - Иконка перед - email & tel */
+.nav-adress .link:hover .icon,
+.nav-adress .link:focus .icon {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: fill;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   fill: var(--acsent-color);
 }
 
-/* При наведении мышки или при получении фокуса */
+/* При наведении мышки или при получении фокуса - email & tel  */
 .nav-adress .link:hover,
 .nav-adress .link:focus {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: color;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   color: var(--acsent-color);
 }
 
@@ -361,7 +410,16 @@ body {
 
 .hero-button:hover,
 .hero-button:focus {
-  background-color: teal;
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: color, background-color;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
+  color: var(--main-black-color);
+  background-color: var(--main-white-color);
   /* transform: rotate(180deg); */
 }
 
@@ -482,6 +540,45 @@ body {
   gap: 30px;
 }
 
+.work .image-box {
+  /* Блок с картинкой и названием - относительная позиция для абсолютного позиционирование текста */
+  position: relative;
+}
+
+.work .image {
+  /* Картинка - блок, чтобы убрать нижние стандартные отступы */
+  display: block;
+}
+
+/* Название видов работ - абсолютное позиционирование в картинке */
+.work .description {
+  /* Абсолютное позиционирование по нижнему краю */
+  position: absolute;
+  bottom: 0;
+  /* Ширина - 100% от блока - размера картинки */
+  width: 100%;
+
+  /* Отступы */
+  margin: 0;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  /* Выравнивание текста по центру */
+  text-align: center;
+  /* Трансформация текста в верхний регистр букв */
+  text-transform: uppercase;
+
+  /* Цвет текста */
+  color: var(--main-white-color);
+  /* Цвет фона - полупрозрачный  */
+  background-color: rgba(47, 48, 58, 0.8);
+
+  /* Шрифт - параметры */
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
 /* team - Команда */
 .team {
   background-color: var(--background-section-color);
@@ -566,11 +663,27 @@ body {
 
 .social-links > .item > .link:hover,
 .social-links > .item > .link:focus {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: background-color;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   background-color: var(--acsent-color);
 }
 
 .social-links > .item > .link:hover .icon,
 .social-links > .item > .link:focus .icon {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: fill;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   fill: var(--main-white-color);
 }
 
@@ -615,6 +728,14 @@ body {
 /* При нажатии на иконку с логотипом клиента */
 .client-list-item .client-link:hover,
 .client-list-item .client-link:focus {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: border-color;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   border-color: var(--acsent-color);
 }
 
@@ -625,6 +746,14 @@ body {
 
 .client-list-item .client-link:hover .client-svg,
 .client-list-item .client-link:focus .client-svg {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: fill;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   fill: var(--acsent-color);
 }
 
@@ -676,13 +805,21 @@ body {
   font-size: 16px;
   line-height: 1.625; /* 26px */
   letter-spacing: 0.03em;
+
+  /* Вид курсора при наведении на кнопку */
+  cursor: pointer;
 }
 
 .filter-button:hover,
 .filter-button:focus {
-  /* Вид курсора при наведении на кнопку */
-  cursor: pointer;
-
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: color, background-color, box-shadow;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   color: var(--main-white-color);
   background-color: var(--acsent-color);
 
@@ -715,6 +852,14 @@ body {
 
 .project-link:hover,
 .project-link:focus {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: box-shadow;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+  /* Новое свойство : */
   /* Многослойная тень при наведении на проект */
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 4px 4px 0px rgba(0, 0, 0, 0.06),
     1px 4px 6px 0px rgba(0, 0, 0, 0.16);
@@ -771,10 +916,12 @@ body {
 /* При ховере на всю карточку с проектом снизу выходит текст */
 .project-link:hover .image-overlay,
 .project-link:focus .image-overlay {
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Новое свойство : */
   /* Блок с текстом перемещается снизу и занимает 100% картинки */
   transform: translateY(0%);
-  /* Анимация - transform -время - функция распределения времени  */
-  transition: transform 500ms linear;
 }
 
 .project-name-type {
@@ -812,8 +959,17 @@ footer {
 }
 
 footer .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
   padding-top: 60px;
   padding-bottom: 60px;
+}
+
+.adress .logo.link {
+  display: block;
+  margin-bottom: 20px;
 }
 
 /* Почтовый адрес */
@@ -824,25 +980,26 @@ address {
   line-height: 1.71428; /* 24px */
   letter-spacing: 0.03em;
 }
-address .description {
-  margin-top: 20px;
-  margin-bottom: 9px;
 
+address .description {
+  margin-bottom: 9px;
   color: var(--main-white-color);
 }
 
 /* Email */
 address .email {
   margin-bottom: 9px;
-
   color: var(--text-footer-tel-color);
-
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
 }
 
 address .email:hover,
 address .email:focus {
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Новое свойство : */
   color: var(--acsent-color);
 }
 
@@ -856,7 +1013,15 @@ address .tel {
 
 address .tel:hover,
 address .tel:focus {
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Новое свойство : */
   color: var(--acsent-color);
+}
+
+footer .social {
+  margin-left: 70px;
 }
 
 .social .title {

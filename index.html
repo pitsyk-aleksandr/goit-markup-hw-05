@@ -8,7 +8,9 @@
     <!-- Краткое описание содержания помогает поисковым системам лучше проиндексировать страницу -->
     <meta name="description" content="Дизайн та розробка сайтів - Головна сторінка" />
 
-    <!-- -->
+    <!-- Размер окна браузера -->
+    <!-- Ширина - ширина девайса (width=device-width)-->
+    <!-- Масштаб просмотра (initial-scale=1.0) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Заголовок страницы, который отображается во вкладке браузера -->
@@ -141,34 +143,46 @@
           <h2 class="section-title">Чим ми займаємося</h2>
           <ul class="work-list list">
             <li class="work-list-item">
-              <a href=""
-                ><img
-                  src="./images/type-work-1.jpg"
-                  alt="Вид роботи 1"
-                  width="370"
-                  height="294"
-                  class="link"
-              /></a>
+              <a href="" class="link">
+                <div class="image-box">
+                  <img
+                    src="./images/type-work-1.jpg"
+                    alt="Вид роботи 1"
+                    width="370"
+                    height="294"
+                    class="image"
+                  />
+                  <h3 class="description">Десктопні додатки</h3>
+                </div>
+              </a>
             </li>
             <li class="work-list-item">
-              <a href=""
-                ><img
-                  src="./images/type-work-2.jpg"
-                  alt="Вид роботи 2"
-                  width="370"
-                  height="294"
-                  class="link"
-              /></a>
+              <a href="" class="link">
+                <div class="image-box">
+                  <img
+                    src="./images/type-work-2.jpg"
+                    alt="Вид роботи 2"
+                    width="370"
+                    height="294"
+                    class="image"
+                  />
+                  <h3 class="description">Мобільні додатки</h3>
+                </div>
+              </a>
             </li>
             <li class="work-list-item">
-              <a href=""
-                ><img
-                  src="./images/type-work-3.jpg"
-                  alt="Вид роботи 3"
-                  width="370"
-                  height="294"
-                  class="link"
-              /></a>
+              <a href="" class="link">
+                <div class="image-box">
+                  <img
+                    src="./images/type-work-3.jpg"
+                    alt="Вид роботи 3"
+                    width="370"
+                    height="294"
+                    class="image"
+                  />
+                  <h3 class="description">Дизайнерські рішення</h3>
+                </div>
+              </a>
             </li>
           </ul>
         </div>
@@ -412,21 +426,26 @@
         </div>
       </section>
     </main>
+
     <!-- Футер - подвал сайта -->
     <footer>
       <div class="container">
-        <a href="./index.html" title="Перехід на основну сторінку" class="logo link"
-          ><span class="logo-blue">Web</span><span class="logo-white">Studio</span></a
-        >
-        <address>
-          <p class="description">м. Київ, пр-т Лесі Українки, 26</p>
-          <p>
-            <a href="mailto:info@devstudio.com" title="Напиши" class="email link"
-              >info@devstudio.com</a
-            >
-          </p>
-          <p><a href="tel:+380961111111" title="Подзвони" class="tel link">+38 096 111 11 11</a></p>
-        </address>
+        <div class="address">
+          <a href="./index.html" title="Перехід на основну сторінку" class="logo link"
+            ><span class="logo-blue">Web</span><span class="logo-white">Studio</span></a
+          >
+          <address>
+            <p class="description">м. Київ, пр-т Лесі Українки, 26</p>
+            <p>
+              <a href="mailto:info@devstudio.com" title="Напиши" class="email link"
+                >info@devstudio.com</a
+              >
+            </p>
+            <p>
+              <a href="tel:+380961111111" title="Подзвони" class="tel link">+38 096 111 11 11</a>
+            </p>
+          </address>
+        </div>
 
         <div class="social">
           <h3 class="title">ПРИЄДНУЙТЕСЬ</h3>
@@ -465,11 +484,12 @@
     </footer>
 
     <!-- Установка верхнего отступа по высоте шапки для body -->
-    <!-- <script>
-      const {height: pageHeaderHeight } = document
-      .querySelector(".page-header")
-      .getBoundingClientRect();
-      document.body.style.paddingtop = '${pageHeaderHeight}px';
-    </script> -->
+    <script>
+      const { height: pageHeaderHeight } = document
+        .querySelector('.page-header')
+        .getBoundingClientRect();
+
+      document.body.style.paddingTop = '${pageHeaderHeight}px';
+    </script>
   </body>
 </html>
