@@ -52,7 +52,9 @@
             <li class="item">
               <a href="./portfolio.html" title="Наші проекти" class="link">Портфоліо</a>
             </li>
-            <li class="item"><a href="" title="Наші контакти" class="link">Контакти</a></li>
+            <li class="item">
+              <a href="./menu.html" title="Наші контакти" class="link">Контакти</a>
+            </li>
           </ul>
         </nav>
         <ul class="nav-adress list">
@@ -79,7 +81,7 @@
       <!-- Шапка -->
       <section class="hero">
         <h1 class="hero-title">Ефективні рішення для <br />вашого бізнесу</h1>
-        <button type="button" class="hero-button">Замовити послугу</button>
+        <button type="button" class="hero-button" data-modal-open>Замовити послугу</button>
       </section>
 
       <!-- Наши Преимущества -->
@@ -482,6 +484,22 @@
         </div>
       </div>
     </footer>
+
+    <!-- Модальное окно - Подложка под модальное окно -->
+    <div class="backdrop is-hidden" data-modal>
+      <!-- <div class="backdrop is-hidden"></div> -->
+      <!-- Само модальное окно -->
+      <div class="modal">
+        <button class="button-close" data-modal-close>
+          <svg class="icon-close" width="18" height="18">
+            <use href="./icon/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Ставим перед закрывающим тегом body -->
+    <script src="./js/modal.js"></script>
 
     <!-- Установка верхнего отступа по высоте шапки для body -->
     <script>

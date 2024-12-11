@@ -98,6 +98,9 @@ p {
 
 /* Тело сайта */
 body {
+  /* Отступ для фиксированного меню Правильное значение будет задано через <script>  */
+  padding-top: 80px;
+
   /* Обнуление внешних отступов для тела сайта */
   margin: 0px;
 
@@ -106,11 +109,6 @@ body {
 
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-}
-
-main {
-  /* Правильное значение будет задано через <script>  */
-  padding-top: 80px;
 }
 
 /* Утилиты */
@@ -233,34 +231,28 @@ main {
 /* Правило - другой цвет ссылки , если ссылка указывает на текущую страницу */
 /* Обязательно .link.current БЕЗ ПРОБЕЛА, тогда применяется class="link current" */
 .nav-site .link.current {
+  position: relative;
   color: var(--acsent-color);
 }
 
-/* Подчеркивание активного пункта меню */
-.nav-site .link::after {
-  display: block;
+/* Подчеркивание пункта меню c названием текущей страницы*/
+.nav-site .link.current::after {
+  position: absolute;
+  /* Пустой контент для ::after */
   content: '';
+  /* Позиционирование прямоугольничка вниз пункта меню */
+  bottom: 0;
+  /* Делаем прямоугольный блок */
+  display: block;
+  /* Ширина блока - 100% ширины .nav-site .link.current */
   width: 100%;
+  /* Высота подчеркивания */
   height: 4px;
+  /* Радиус скругления */
   border-radius: 2px;
-
+  /* Цвет фона */
   background-color: var(--acsent-color);
-  /* В обычном состоянии - прозрачная */
-  opacity: 0;
-}
-
-/* При ховере или фокусе  */
-.nav-site .link:hover::after,
-.nav-site .link:focus::after {
-  /* Параметры СSS-перехода : */
-  /* - анимируемое свойство */
-  transition: opacity;
-  /* - функция распределения времени */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* - время перехода */
-  transition-duration: 250ms;
-  /* Новое свойство : */
-  /* строка появляется - становится непрозрачной */
+  /* В обычном состоянии - НЕ прозрачная */
   opacity: 1;
 }
 
@@ -1027,4 +1019,107 @@ footer .social {
 .social .title {
   margin-bottom: 20px;
   color: var(--main-white-color);
+}
+
+/* Фон всего экрана, если появляеся модальное окно */
+.backdrop {
+  /* Задаем фиксированную позицию */
+  position: fixed;
+  /* Позиционирование - верхний левый угол */
+  top: 0;
+  left: 0;
+  /* Занимает всю ширину и высоту экрана */
+  width: 100%;
+  height: 100%;
+  /* Цвет фона - черный с прозрачностью 20% (как в макете) */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  /* Полная прозрачность и backdrop, и вложенных элементов */
+  opacity: 0;
+  /* Возможность пропускать через backdrop события (клики и т.п.) */
+  pointer-events: none;
+
+  visibility: hidden;
+}
+
+.hero-button:any-link .backdrop {
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: opasity;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 2500ms;
+  /* Новое свойство : */
+  /* Полная НЕ прозрачность и backdrop, и вложенных элементов */
+  opacity: 1;
+}
+
+.modal {
+  /* Абсолютное позиционирование */
+  position: absolute;
+  /* Центрирование модального окна */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Минимальные размеры - ширина и высота */
+  min-width: 528px;
+  min-height: 581px;
+  /* Внутренние отступы */
+  padding: 15px;
+
+  /* Радиус границы */
+  border-radius: 4px;
+
+  color: var(--main-black-color);
+  background-color: var(--main-white-color);
+
+  /* Многослойная тень  */
+  box-shadow: 0px 1px 3cm 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.button-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.1);
+
+  background-color: var(--main-white-color);
+
+  /* Вид курсора при наведении на кнопку либо при фокусе с клавиатуры */
+  cursor: pointer;
+}
+
+.icon-close {
+  /* Изображение делаем блочным элементом */
+  display: block;
+  /* Убираем наружные отступы */
+  margin: 0;
+  /* Заливка элемента */
+  fill: var(--main-black-color);
+}
+
+/* События при кнопке закрытия модального окна */
+.button-close:hover {
+  /* Меняется цвет фона */
+  background-color: var(--acsent-color);
+}
+
+.button-close:hover .icon-close {
+  /* Меняется цвет иконки */
+  fill: var(--main-white-color);
 }
