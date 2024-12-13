@@ -135,10 +135,15 @@ body {
 
 /* Header - на всю длину */
 .page-header {
+  /* Фиксированная верхняя строка меню */
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
+
+  /* page-header ставится поверх ВСЕХ слоев */
+  z-index: 999;
+
   min-height: 80px;
   /* Нижняя граница элемента */
   border-bottom: var(--stroke-index-color) solid 1px;
@@ -209,14 +214,12 @@ body {
   padding-top: 32px;
   padding-bottom: 28px;
 
-  /* Цвет текста */
-  color: var(--second-text-color);
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
-}
-/* При наведении мышки или при получении фокуса */
-.nav-site .link:hover,
-.nav-site .link:focus {
+
+  /* Цвет текста */
+  color: var(--second-text-color);
+
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: color;
@@ -224,6 +227,10 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
+}
+/* При наведении мышки или при получении фокуса */
+.nav-site .link:hover,
+.nav-site .link:focus {
   /* Новое свойство */
   color: var(--acsent-color);
 }
@@ -231,12 +238,15 @@ body {
 /* Правило - другой цвет ссылки , если ссылка указывает на текущую страницу */
 /* Обязательно .link.current БЕЗ ПРОБЕЛА, тогда применяется class="link current" */
 .nav-site .link.current {
+  /* Для абсолютного позиционирования подчеркивания текущего пункта меню */
   position: relative;
+
   color: var(--acsent-color);
 }
 
 /* Подчеркивание пункта меню c названием текущей страницы*/
 .nav-site .link.current::after {
+  /* Абсолютное позиционирование */
   position: absolute;
   /* Пустой контент для ::after */
   content: '';
@@ -246,7 +256,7 @@ body {
   display: block;
   /* Ширина блока - 100% ширины .nav-site .link.current */
   width: 100%;
-  /* Высота подчеркивания */
+  /* Высота этого блока подчеркивания */
   height: 4px;
   /* Радиус скругления */
   border-radius: 2px;
@@ -273,39 +283,11 @@ body {
   padding-top: 32px;
   padding-bottom: 32px;
 
+  /* Цвет текста в обычном состоянии */
   color: var(--main-text-color);
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
-}
 
-/* Расстояние между пунктами меню навигации - задаем через селектор соседа */
-.nav-adress .item + .item {
-  margin-left: 50px;
-}
-
-/* Иконка перед - email & tel */
-.nav-adress .icon {
-  fill: var(--stroke-client-color);
-  margin-right: 10px;
-}
-
-/* Изменение цвета - Иконка перед - email & tel */
-.nav-adress .link:hover .icon,
-.nav-adress .link:focus .icon {
-  /* Параметры СSS-перехода : */
-  /* - анимируемое свойство */
-  transition: fill;
-  /* - функция распределения времени */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* - время перехода */
-  transition-duration: 250ms;
-  /* Новое свойство : */
-  fill: var(--acsent-color);
-}
-
-/* При наведении мышки или при получении фокуса - email & tel  */
-.nav-adress .link:hover,
-.nav-adress .link:focus {
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: color;
@@ -313,8 +295,42 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
+}
+
+/* Расстояние между пунктами меню навигации - задаем через селектор соседа */
+.nav-adress .item + .item {
+  margin-left: 50px;
+}
+
+/* При наведении мышки или при получении фокуса - email & tel  */
+.nav-adress .link:hover,
+.nav-adress .link:focus {
   /* Новое свойство : */
   color: var(--acsent-color);
+}
+
+/* Иконка перед - email & tel */
+.nav-adress .icon {
+  /* Отступ иконки от пункта с адресом */
+  margin-right: 10px;
+
+  /* Цвет заполнения иконки */
+  fill: var(--stroke-client-color);
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: fill;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
+}
+
+/* Изменение цвета - Иконка перед - email & tel */
+.nav-adress .link:hover .icon,
+.nav-adress .link:focus .icon {
+  /* Новое свойство : */
+  /* Цвет заполнения иконки */
+  fill: var(--acsent-color);
 }
 
 /* Вставляем иконки через псевдоэлемент ::before */
@@ -394,14 +410,6 @@ body {
   cursor: pointer;
 
   /*  Set transition values  */
-  transition-property: background-color, transform;
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-delay: 0;
-}
-
-.hero-button:hover,
-.hero-button:focus {
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: color, background-color;
@@ -409,6 +417,10 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
+}
+
+.hero-button:hover,
+.hero-button:focus {
   /* Новое свойство : */
   color: var(--main-black-color);
   background-color: var(--main-white-color);
@@ -446,9 +458,16 @@ body {
 }
 
 /* Только для секции Преимущества убирает вывод на экран заголовка */
-/* .section-title.feature {
+.section-title.feature {
+  /* Прячем (скрываем) заголовок секции */
+  /* Оба варианта делают одно и то же */
   visibility: hidden;
-}  */
+  opacity: 0;
+  /* За счет отрицательного внешнего отступа - убираем высоту текста */
+  margin-top: -43px;
+  /* Убираем нижний отступ заголовка */
+  margin-bottom: 0;
+}
 
 /* feature - Особливості - Преимущества */
 .feature-list {
@@ -645,16 +664,7 @@ body {
 
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
-}
 
-.social-links .icon {
-  display: block;
-  margin: 0;
-  fill: var(--stroke-client-color);
-}
-
-.social-links > .item > .link:hover,
-.social-links > .item > .link:focus {
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: background-color;
@@ -662,12 +672,13 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
-  /* Новое свойство : */
-  background-color: var(--acsent-color);
 }
 
-.social-links > .item > .link:hover .icon,
-.social-links > .item > .link:focus .icon {
+.social-links .icon {
+  display: block;
+  margin: 0;
+  fill: var(--stroke-client-color);
+
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: fill;
@@ -675,6 +686,16 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
+}
+
+.social-links > .item > .link:hover,
+.social-links > .item > .link:focus {
+  /* Новое свойство : */
+  background-color: var(--acsent-color);
+}
+
+.social-links > .item > .link:hover .icon,
+.social-links > .item > .link:focus .icon {
   /* Новое свойство : */
   fill: var(--main-white-color);
 }
@@ -703,6 +724,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: border-color, border-width;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
 }
 
 /* Картинка с логотипом */
@@ -715,20 +744,22 @@ body {
   /* Делаем блочный элемент,чтобы убрать стандартный отступ снизу картинки*/
   display: block;
   fill: var(--stroke-client-color);
+
+  /* Параметры СSS-перехода : */
+  /* - анимируемое свойство */
+  transition: fill;
+  /* - функция распределения времени */
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  /* - время перехода */
+  transition-duration: 250ms;
 }
 
 /* При нажатии на иконку с логотипом клиента */
 .client-list-item .client-link:hover,
 .client-list-item .client-link:focus {
-  /* Параметры СSS-перехода : */
-  /* - анимируемое свойство */
-  transition: border-color;
-  /* - функция распределения времени */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* - время перехода */
-  transition-duration: 250ms;
   /* Новое свойство : */
   border-color: var(--acsent-color);
+  border-width: 4px;
 }
 
 /* Для полностью встроенного SVG (на примере Клиент 1) */
@@ -738,13 +769,6 @@ body {
 
 .client-list-item .client-link:hover .client-svg,
 .client-list-item .client-link:focus .client-svg {
-  /* Параметры СSS-перехода : */
-  /* - анимируемое свойство */
-  transition: fill;
-  /* - функция распределения времени */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* - время перехода */
-  transition-duration: 250ms;
   /* Новое свойство : */
   fill: var(--acsent-color);
 }
@@ -756,6 +780,13 @@ body {
 
   /* Выравнивание текста по центру */
   text-align: center;
+
+  /* Прячем (скрываем) заголовок  */
+  /* Оба варианта делают одно и то же */
+  visibility: hidden;
+  opacity: 0;
+  /* За счет отрицательного внешнего отступа - убираем высоту текста */
+  margin-top: -27px;
 }
 
 /* filter - Фильтры */
@@ -764,6 +795,12 @@ body {
 
   /* Выравнивание текста по центру */
   text-align: center;
+
+  /* Прячем (скрываем) заголовок  */
+  /* Оба варианта делают одно и то же */
+  visibility: hidden;
+  opacity: 0;
+  margin-top: -27px;
 }
 
 .filter-list {
@@ -800,10 +837,7 @@ body {
 
   /* Вид курсора при наведении на кнопку */
   cursor: pointer;
-}
 
-.filter-button:hover,
-.filter-button:focus {
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: color, background-color, box-shadow;
@@ -811,7 +845,11 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
-  /* Новое свойство : */
+}
+
+.filter-button:hover,
+.filter-button:focus {
+  /* Новые анимируемые свойства : */
   color: var(--main-white-color);
   background-color: var(--acsent-color);
 
@@ -831,6 +869,12 @@ body {
 
   /* Выравнивание текста по центру */
   text-align: center;
+  /* Прячем (скрываем) заголовок  */
+  /* Оба варианта делают одно и то же */
+  visibility: hidden;
+  opacity: 0;
+  /* За счет отрицательного внешнего отступа - убираем высоту текста */
+  margin-top: -27px;
 }
 
 .project-list {
@@ -842,8 +886,13 @@ body {
   gap: 30px;
 }
 
-.project-link:hover,
-.project-link:focus {
+.project-link {
+  /* Делаем ссылку блочным элементом */
+  display: block;
+
+  /* Убираем подчеркивание для ссылки */
+  text-decoration: none;
+
   /* Параметры СSS-перехода : */
   /* - анимируемое свойство */
   transition: box-shadow;
@@ -851,18 +900,14 @@ body {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* - время перехода */
   transition-duration: 250ms;
+}
+
+.project-link:hover,
+.project-link:focus {
   /* Новое свойство : */
   /* Многослойная тень при наведении на проект */
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 4px 4px 0px rgba(0, 0, 0, 0.06),
     1px 4px 6px 0px rgba(0, 0, 0, 0.16);
-}
-
-.project-link {
-  /* Делаем ссылку блочным элементом */
-  display: block;
-
-  /* Убираем подчеркивание для ссылки */
-  text-decoration: none;
 }
 
 .project-photo {
@@ -903,14 +948,15 @@ body {
   color: var(--main-white-color);
   /* Фон блока - акцентный - с прозрачностью 90% */
   background-color: rgba(33, 150, 243, 0.9);
+
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* При ховере на всю карточку с проектом снизу выходит текст */
 .project-link:hover .image-overlay,
 .project-link:focus .image-overlay {
-  /* Параметры СSS-перехода : */
-  /* Анимация - transform - время - функция распределения времени  */
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Новое свойство : */
   /* Блок с текстом перемещается снизу и занимает 100% картинки */
   transform: translateY(0%);
@@ -984,13 +1030,13 @@ address .email {
   color: var(--text-footer-tel-color);
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 address .email:hover,
 address .email:focus {
-  /* Параметры СSS-перехода : */
-  /* Анимация - transform - время - функция распределения времени  */
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Новое свойство : */
   color: var(--acsent-color);
 }
@@ -1001,13 +1047,14 @@ address .tel {
 
   /* Убрать подчеркивание для ссылки */
   text-decoration: none;
+
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 address .tel:hover,
 address .tel:focus {
-  /* Параметры СSS-перехода : */
-  /* Анимация - transform - время - функция распределения времени  */
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   /* Новое свойство : */
   color: var(--acsent-color);
 }
@@ -1026,47 +1073,56 @@ footer .social {
   /* Задаем фиксированную позицию */
   position: fixed;
   /* Позиционирование - верхний левый угол */
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   /* Занимает всю ширину и высоту экрана */
   width: 100%;
   height: 100%;
   /* Цвет фона - черный с прозрачностью 20% (как в макете) */
   background-color: rgba(0, 0, 0, 0.2);
+
+  /* Полная НЕ прозрачность и backdrop, и вложенных элементов */
+  opacity: 1;
+
+  /* Параметры СSS-перехода : */
+  /* Анимация - opacity - время - функция распределения времени  */
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Фон в состоянии спрятанности (когда установлен класс .is-hidden) */
 .backdrop.is-hidden {
-  /* Полная прозрачность и backdrop, и вложенных элементов */
+  /* Анимируемое свойство - прозрачность и backdrop, и вложенных элементов */
   opacity: 0;
   /* Возможность пропускать через backdrop события (клики и т.п.) */
   pointer-events: none;
-
-  visibility: hidden;
 }
 
-.hero-button:any-link .backdrop {
-  /* Параметры СSS-перехода : */
-  /* - анимируемое свойство */
-  transition: opasity;
-  /* - функция распределения времени */
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* - время перехода */
-  transition-duration: 2500ms;
-  /* Новое свойство : */
-  /* Полная НЕ прозрачность и backdrop, и вложенных элементов */
-  opacity: 1;
+/* Модальное окно в состоянии спрятанности (когда у фона класс .is-hidden) */
+.backdrop.is-hidden .modal {
+  /* Анимируемое свойство - transform */
+  /* Состоит из 2- частей, указываемых через пробел */
+  /* translate(-50%, -50%) - подцентрирование окна */
+  /* scale(0) - масштабирование 0,8:1 */
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
+/* Обычное состояние модального окна */
 .modal {
   /* Абсолютное позиционирование */
   position: absolute;
   /* Центрирование модального окна */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
+  /* Анимируемое свойство - transform */
+  /* Состоит из 2- частей, указываемых через пробел */
+  /* translate(-50%, -50%) - подцентрирование окна */
+  /* scale(1) - масштабирование 1:1 */
+  transform: translate(-50%, -50%) scale(1);
+
   /* Минимальные размеры - ширина и высота */
-  min-width: 528px;
-  min-height: 581px;
+  min-width: 400px;
+  min-height: 250px;
   /* Внутренние отступы */
   padding: 15px;
 
@@ -1079,6 +1135,10 @@ footer .social {
   /* Многослойная тень  */
   box-shadow: 0px 1px 3cm 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
     0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+
+  /* Параметры СSS-перехода : */
+  /* Анимация - transform - время - функция распределения времени  */
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-close {
