@@ -481,10 +481,66 @@
                   </li>
         </ul>
         </div>
+        <div class="subscribe">
+          <p class="text">Subscribe</p>
+          <form class="subscribe-form">
+            <!-- <label for="sub-email" ></label> -->
+            <input type="email" placeholder="E-mail" class="subscribe-input" id="sub-email" name="subscribe-email"/>
+            <button type="submit" class="subscribe-btn">
+              <p>Subscribe</p>
+              <svg width="24" height="24" class="icon">
+                <use href="./images/svg-1-original/send.svg"></use>
+              </svg>
+            </button>
+          </form>
 
+        </div>
+      </div>
+    </footer>
+
+    <!-- Модальне вікно -->
+    <div class="modal-overlay is-open">
+      <div class="modal">
+        <form class="modal-form">
+          <button class="modal-close-btn">
+              <svg width="8" height="8" class="icon">
+                <use href="./images/svg-1-original/close.svg"></use>
+              </svg>
+          </button>
+
+        </form>
+        <p>Leave your contacts and we will call you back</p>
+        <div class="mod-inputs">
+          <div class="mod-input">
+            <label for="user-name">Name</label>
+            <input type="text" name="user-name" id="user-name">
+          </div>
+          <div class="mod-input">
+            <label for="user-phone">Phone</label>
+            <input type="tel" name="user-phone" id="user-phone">
+          </div>
+          <div class="mod-input">
+            <label for="user-email">Email</label>
+            <input type="email" name="user-email" id="user-email">
+          </div>
+          <div class="mod-input">
+            <label for="user-comment">Comment</label>
+            <textarea name="user-comment" id="user-comment" rows="5"></textarea>
+          </div>
+        </div>
+
+        <div class="mod-accept">
+          <label for="user-accept">
+            <input type="checkbox" name="user-accept" id="user-accept">
+            I accept the terms and conditions of the Privacy Policy
+          </label>
+        </div>
+
+
+        <button type="submit" class="send-btn">Send</button>
 
       </div>
+    </div>
 
-    </footer>
   </body>
 </html>
