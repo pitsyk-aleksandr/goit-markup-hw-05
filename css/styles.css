@@ -995,9 +995,7 @@ body {
 }
 
 /* Иконка в input  */
-.thumb-input .icon {
-  /* display: block;
-  margin: 0; */
+.input-thumb .icon {
   /* Даем абсолютное позиционирование */
   position: absolute;
   /* Даємо відступ зліва по осі X */
@@ -1010,7 +1008,7 @@ body {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.thumb-input .input:focus + .icon {
+.input-thumb .input:focus + .icon {
   /* Зміна кольору іконки при фокусі на input */
   fill: var(--iris);
 }
