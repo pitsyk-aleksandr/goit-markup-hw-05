@@ -762,9 +762,16 @@ body {
 
 /* Поле input для вводу електронної пошти */
 .subscribe-input {
-  padding: 8px 16px;
+  width: 264px;
+  height: 40px; 
+  font-size: 12px; 
+  line-height: 2; 
+  letter-spacing: 0.04em; 
+  /* padding: 8px 16px; */
+  padding-left: 16px;
   color: var(--white);
-  background-color: var(--navy-blue);
+  /* background-color: var(--navy-blue); */
+  background-color: transparent;
   border: 1px solid var(--white);
   border-radius: 4px;
   box-shadow: 0 4 4 0 rgba(0, 0, 0, 0.15);
@@ -777,16 +784,21 @@ body {
 
 
 .subscribe-btn {
-  padding: 8px 16px;
+  min-width: 165px;
+  height: 40px; 
+  /* padding: 8px 16px; */
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 16px;
   box-shadow: none;
 }
 
-/* .subscribe-btn .icon {
+.subscribe-btn .icon {
+  margin-left: 16px;
   color: var(--white);
-} */
+}
 
 .subscribe-btn:hover,
 .subscribe-btn:focus {
@@ -826,7 +838,8 @@ body {
   /* На overlay ігноруються події миші */
   pointer-events: none;
     /* Параметри переходу - прозорість */
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 
@@ -839,11 +852,21 @@ body {
 
 /* Модальне вікно */
 .modal {
-  /* Для абсолютного позиционирования кнопки */
-  position: relative;
+  /* Позиционирование модального окна и для позиционирования кнопки close*/
+  position: absolute;
+
   /* Ограничиваем ширину и высоту модального окна */
   max-width: 408px;
-  max-height: 90%;
+  max-height: 584px; 
+  
+  /* Центрування модального вікна по горизонталі та вертикалі */
+  top: 50%;
+  left: 50%;
+  /* Для центрування елемента по вертикалі та горизонталі на веб-сторінці */
+  transform: translate(-50%, -50%); 
+  /* Дозволяє задавати анімаційний ефект для зміни значень властивостей стилю */
+   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   /* При переполнении - появляется скролл по оси Y */
   overflow-y: auto;
 
@@ -858,10 +881,22 @@ body {
   0px 1px 3px 0px rgba(0, 0, 0, 0.12), 
   0px 1px 1px 0px rgba(0, 0, 0, 0.14);
 
+
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 500px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  /* Колір стиль --navy-blue: #2e2f42; */
+  color: var(--navy-blue);
+  text-align: center;
+  margin-bottom: 16px;
 }
 
 /* Кнопка закрытия модального окна */
-.modal-close-btn {
+.close-btn {
   /* Абсолютное позиционирование кнопки */
   position: absolute;
   top: 24px;
@@ -879,37 +914,95 @@ body {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.10);
 
-  color: #000;
-  background-color: #fff;
+  /* Колір стиль  --cornflower: #e7e9fc; */
+  background-color: var(--cornflower);
 
+  /* Анімація переходів */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 
-/* Cтилі тексту для всіх label */
-label {
+.close-btn:hover,
+.close-btn:focus {
+  /* Зміна кольору фону */
+  background-color: #404bbf; 
+  /* Обнулення значення бордеру */
+  border: none;
+}
+
+.close-btn .icon {
+  /* Колір стиль --navy-blue: #2e2f42; */
+  fill: var(--navy-blue);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-btn .icon:hover {
+  fill: #ffffff;
+}
+
+/* Cтилі тексту для всіх label в модальному вікні */
+.modal-form label {
   /* Small Text */
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
   /* Колір --light-slate: #8e8f99; */
-  color: var(--light-slate)
-
-}
-/* Блок з усіма input в модальному вікні */
-.mod-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 16px auto;
+  color: var(--light-slate);
+  margin-bottom: 4px;
 }
 
-/* Блок одного input в модальному вікні */
-.mod-input {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+
+/* Поля ввода - input */
+.modal-form input {
+  width: 100%;
+  height: 40px;
+
+  padding-left: 31px;
+
+  /* Шрифт  */
+  
+  border: 1px solid var(--navy-blue-modal);
+  border-radius: 4px;
+
 }
+
+/* Поля ввода - input - при  :focus*/
+.modal-form input:focus {
+  /* Выключаем свойство outline:, которое автоматически при фокусе на элемент */
+  outline: none;
+  /* Меняем цвет рамки */
+  border-color: var(--iris);
+}
+
+/* Контейнер для поля input (для вставки иконки) */
+.thumb-input {
+  display: block;
+  position: relative;
+}
+
+/* Иконка в input  */
+.thumb-input .icon {
+  display: block;
+  margin: 0;
+  /* Даем абсолютное позиционирование */
+  position: absolute;
+  /* Центрируем по оси Y */
+  top: 50%;
+  transform: translateY(-50%);
+  /* Даем отступ слева по оси X */
+  left: 12px;
+
+  fill: var(--navy-blue);
+}
+
+/* Зміна кольору іконки при фокусі на input */
+.thumb-input input:focus + .icon {
+  fill: var(--iris);
+}
+
+/* Блок - коментарі */
+
 
 /* Блок з checkbox акцептування */
-.mod-accept {
+.checkbox-policy {
   margin-bottom: 24px;
 }
