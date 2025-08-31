@@ -1084,7 +1084,7 @@ body {
 }
 
 
-.checkbox-input:checked .checkbox-icon {
+.checkbox-input:checked + .label-privacy .checkbox-icon {
   /* вимкнення стандартного оформлення кнопки */
   border: none;
   /* зазначення фону */
@@ -1092,6 +1092,10 @@ body {
   /* зазначення кольору іконки */
   fill: var(--cloud);
 }
+
+
+
+
 
 /* Посилання на умови  */
 .privacy-link {
